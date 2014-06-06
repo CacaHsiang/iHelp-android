@@ -46,7 +46,47 @@
         <!-- android:hint="點我增加分類" -->
         <!-- android:inputType="text" -->
         <!-- android:maxLength="6" /> -->
+
     </LinearLayout>
+
+    <TextView
+        style="@style/text_black_content"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/editText_bg_color" >
+
+        <EditText
+            android:id="@+id/addressText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="請輸入所在地址或事件位置..."
+            android:inputType="textPostalAddress" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/text_black_content"
+        android:layout_width="wrap_content"
+        android:layout_height="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp" />
+
+    <Spinner
+        android:id="@+id/spinner01"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
 
     <TextView
         style="@style/text_black_content"
@@ -56,13 +96,13 @@
         android:gravity="bottom"
         android:paddingBottom="10dp"
         android:paddingLeft="20dp"
-        android:text="您即將傳送的報案內容如下：" />
+        android:text="其他相關資訊，請輸入：" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:background="#EEEFEF" >
+        android:background="@color/editText_bg_color" >
 
         <EditText
             android:id="@+id/report_data"

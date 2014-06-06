@@ -1,5 +1,10 @@
 package edu.stu.ihelp.client;
 
+import android.app.ListActivity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.concurrent.ExecutionException;
@@ -32,6 +37,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import edu.stu.tool.Internet;
 import edu.stu.tool.Locate;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 public class General extends Activity {
     private EditText reportData;
@@ -66,18 +79,18 @@ public class General extends Activity {
 
                 titleLength = reportBody.length();
 
-                if (join1.getCurrentItem() == 0) {
-                    reportBody.append("發生緊急狀況。");
-                    reportBody.setSpan(new ForegroundColorSpan(Color.RED),
-                            titleLength + 2, reportBody.length() - 1,
-                            Spanned.SPAN_COMPOSING);
-                } else {
-                    reportBody.append("發生" + joindata[join1.getCurrentItem()]
-                            + "。");
-                    reportBody.setSpan(new ForegroundColorSpan(Color.RED),
-                            titleLength + 2, reportBody.length() - 1,
-                            Spanned.SPAN_COMPOSING);
-                }
+//                if (join1.getCurrentItem() == 0) {
+//                    reportBody.append("發生緊急狀況。");
+//                    reportBody.setSpan(new ForegroundColorSpan(Color.RED),
+//                            titleLength + 2, reportBody.length() - 1,
+//                            Spanned.SPAN_COMPOSING);
+//                } else {
+//                    reportBody.append("發生" + joindata[join1.getCurrentItem()]
+//                            + "。");
+//                    reportBody.setSpan(new ForegroundColorSpan(Color.RED),
+//                            titleLength + 2, reportBody.length() - 1,
+//                            Spanned.SPAN_COMPOSING);
+//                }
 
                 if (!address.equals("")) {
                     reportBody.append("\n" + address);
@@ -123,6 +136,12 @@ public class General extends Activity {
             }
         }
 
+        Spinner spinner_items = (Spinner) findViewById(R.id.spinner01);
+        // 從res/values/string.xml讀取資料到Spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.items, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_items.setAdapter(adapter);
     }
 
     public void clock(View v) {
@@ -239,7 +258,7 @@ public class General extends Activity {
                     sendSMS(phone.replaceAll("\\s+", ""), title + reportBody);
 
                 }
-                
+
                 dialog.dismiss();
                 General.this.finish();
             }
@@ -248,7 +267,8 @@ public class General extends Activity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(General.this, "報案訊息取消送出", Toast.LENGTH_SHORT).show();
+                Toast.makeText(General.this, "報案訊息取消送出", Toast.LENGTH_SHORT)
+                        .show();
                 dialog.dismiss();
             }
         });
